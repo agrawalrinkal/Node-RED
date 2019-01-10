@@ -1,0 +1,140 @@
+
+[
+    {
+        "id": "122ebf5.5d20741",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "73b217f7.23a348",
+        "type": "http request",
+        "z": "122ebf5.5d20741",
+        "name": "Recent Quakes",
+        "method": "GET",
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.csv",
+        "tls": "",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "ac9044a1.868668"
+            ]
+        ]
+    },
+    {
+        "id": "ac9044a1.868668",
+        "type": "csv",
+        "z": "122ebf5.5d20741",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": 0,
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "a4422ef7.1be2",
+                "b55f377b.655398"
+            ]
+        ]
+    },
+    {
+        "id": "a4422ef7.1be2",
+        "type": "debug",
+        "z": "122ebf5.5d20741",
+        "name": "",
+        "active": true,
+        "complete": false,
+        "x": 650,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b55f377b.655398",
+        "type": "switch",
+        "z": "122ebf5.5d20741",
+        "name": "",
+        "property": "payload.mag",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "7",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "8adff737.faec38"
+            ]
+        ]
+    },
+    {
+        "id": "8adff737.faec38",
+        "type": "change",
+        "z": "122ebf5.5d20741",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "PANIC!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 220,
+        "wires": [
+            [
+                "e996b5ac.433d48"
+            ]
+        ]
+    },
+    {
+        "id": "e996b5ac.433d48",
+        "type": "debug",
+        "z": "122ebf5.5d20741",
+        "name": "",
+        "active": true,
+        "complete": false,
+        "x": 770,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8fbba614.3bfcd8",
+        "type": "inject",
+        "z": "122ebf5.5d20741",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "73b217f7.23a348"
+            ]
+        ]
+    }
+]
