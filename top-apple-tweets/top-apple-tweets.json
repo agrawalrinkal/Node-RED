@@ -1,0 +1,54 @@
+[
+    {
+        "id": "dbf81001.9372b",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8838b81.6ecb948",
+        "type": "twitter in",
+        "z": "dbf81001.9372b",
+        "twitter": "",
+        "tags": "#APPL, apple, applestocks",
+        "user": "false",
+        "name": "TopAppleTweets",
+        "inputs": 0,
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "74a4035a.cbcf5c"
+            ]
+        ]
+    },
+    {
+        "id": "74a4035a.cbcf5c",
+        "type": "debug",
+        "z": "dbf81001.9372b",
+        "name": "DisplayTweets",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 560,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1334c968.4f8477",
+        "type": "function",
+        "z": "dbf81001.9372b",
+        "name": "Tweets Filter",
+        "func": "// need to implement it\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    }
+]
